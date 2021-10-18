@@ -12,6 +12,27 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
     .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ])
+    
+    .webpackConfig(require('./webpack.config'))
+    .sourceMaps()
+    .browserSync({
+        open: false,
+        proxy: {
+            target: "onfly:8003", // replace with your web server container
+            proxyReq: [
+                function(proxyReq) {
+                    proxyReq.setHeader('HOST', 'onfly:8003'); // replace with your site host
+                }
+            ]
+        }
+    });
+
+if (mix.inProduction()) {
+    mix.version();
+}

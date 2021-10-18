@@ -1,0 +1,39 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.dropdown-menu {
+    overflow-y: visible !important;
+    z-index: 999;
+   left:-80px !important;
+   }
+    ul {
+      overflow-y: visible !important;
+    }
+    li {
+      overflow-y: visible !important;
+    }
+    li:hover {
+      cursor: pointer;
+      cursor: hand;
+    }
+  
+  .title-element-name {
+    color: #FF8200;
+    font-weight: bold;
+  }
+  
+  .table-responsive {
+    z-index: 999;
+    overflow-y: auto !important;
+  }
+  
+  .title-element-name {
+    color: #FF8200;
+    font-weight: bold;
+  }
+  
+  .table-responsive {
+    z-index: 999;
+    overflow-y: auto !important;
+  }

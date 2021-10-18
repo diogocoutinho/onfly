@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ExpenditureController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('user', function () {
+    return auth()->user();
 });
+Route::resource('users', UserController::class)->middleware(['auth:sanctum', 'verified']);
+Route::resource('expenditures', ExpenditureController::class)->middleware(['auth:sanctum', 'verified']);
